@@ -34,6 +34,13 @@ function tripList() {
       .then((response) => handleResponse(response))
       .catch((error) => handleResponse(error.response));
   }
+  function getTripById(id) {
+    return axios
+      .get(`${BASE_URL}/${id}`)
+      .then((response) => handleResponse(response))
+      .catch((error) => handleResponse(error.response));
+  }
+
 
 
   const tripService = {
@@ -42,6 +49,7 @@ function tripList() {
   deleteTrip,
   updateTrip,
   handleResponse,
+  getTripById,
   }
   export default tripService;
   

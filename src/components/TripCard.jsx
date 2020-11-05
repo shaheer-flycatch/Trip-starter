@@ -17,7 +17,7 @@ const TripCard = ({ trip, handleDelete, handleEdit }) => {
           {" "}
           <EditOutlined
             style={{ paddingRight: "10px" }}
-            onClick={() => handleEdit(trip)}
+            onClick={() => handleEdit(trip.id)}
           />
           <Popconfirm title={GLOBAL_CONSTANTS.ARE_YOU_SURE}
             onConfirm={() => handleDelete(trip.id)}

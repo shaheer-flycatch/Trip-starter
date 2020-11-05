@@ -33,11 +33,30 @@ const allTrips = (state = initialState, action) => {
         trips: action.tripData,
         isLoading: false,
       };
-    case ACTION_TYPE.GET_TRIP_BY_ID_FAILURE:
+    case ACTION_TYPE.GET_ALL_TRIP_FAILURE:
       return {
         ...state,
         error: action.error,
       };
+      case ACTION_TYPE.GET_TRIP_BY_ID_REQUEST:
+        return {
+          ...state,
+          isLoading: false,
+        };
+      case ACTION_TYPE.GET_TRIP_BY_ID_SUCCESS:
+        return {
+          ...state,
+          tripById:action.trip,
+          isLoading: false,
+        };
+      case ACTION_TYPE.GET_TRIP_BY_ID_FAILURE:
+        return {
+          ...state,
+          error: action.error,
+        };
+
+
+
     case ACTION_TYPE.UPDATE_TRIP_REQUEST:
       return {
         ...state,

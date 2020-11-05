@@ -16,11 +16,6 @@ const ShowTripDetails = () => {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [createFormVisible, setCreateFormVisible] = useState(false);
-  const [tripData, setTripData] = useState({
-    id: "",
-    destination: "",
-    comment: "",
-  });
   useEffect(() => {
     dispatch(tripActions.tripList());
   }, []);
@@ -28,21 +23,14 @@ const ShowTripDetails = () => {
     dispatch(tripActions.deleteTrip(id));
   };
   const allTrips = useSelector((state) => state.allTrips);
-  const { trips ,isLoading} = allTrips;
+  const { trips ,isLoading ,tripById} = allTrips;
   const handleCancel = () => {
     setVisible(false);
     setCreateFormVisible(false);
   };
-  const handleEdit = (trip) => {
+  const handleEdit = (tripId) => {
     setVisible(true);
-    setTripData({
-      id: trip.id,
-      destination: trip.destination,
-      comment: trip.comment,
-      start: trip.start,
-      color: trip.color,
-      duration: trip.duration,
-    });
+   dispatch(tripActions.getTripById(tripId))
   };
 
   const onFinish = (fieldsValue) => {
@@ -61,9 +49,9 @@ const ShowTripDetails = () => {
   return (
     <div>
       <ShowAlert/>
-      {visible && (
+      {visible && tripById&&(
         <TripForm
-          tripData={tripData}
+          tripData={tripById}
           handleCancel={handleCancel}
           onFinish={onFinish}
           title={GLOBAL_CONSTANTS.EDIT_TRIP_DATA}
