@@ -14,4 +14,4 @@
 
 }
 
-export default GLOBAL_CONSTANTS;
+export {GLOBAL_CONSTANTS} ;

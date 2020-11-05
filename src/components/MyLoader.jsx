@@ -1,6 +1,6 @@
 import { Card } from 'antd'
 import React from 'react'
-function MyLoader() {
+const  MyLoader=()=> {
   return (
     <div>
       <Card style={{ width: 400, height: 245 }} loading={true}></Card>
@@ -8,4 +8,4 @@ function MyLoader() {
   )
 }
 
-export default MyLoader;
+export {MyLoader} ;

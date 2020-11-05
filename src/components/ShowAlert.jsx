@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 const ShowAlert = () => {
   const alert = useSelector((state) => state.alert);
   const success = () => {
-    message.success(alert.message, 2);
+    message.success(alert.message, 3);
   };
   const error = () => {
-    message.error(alert.message, 2);
+    message.error(alert.message, 3);
   };
   useEffect(() => {
     if (alert.type === "success") {
@@ -21,4 +21,4 @@ const ShowAlert = () => {
   return null;
 };
 
-export default ShowAlert;
+export {ShowAlert} ;

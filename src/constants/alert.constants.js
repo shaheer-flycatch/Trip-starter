@@ -4,4 +4,4 @@ const ALERT_ACTION_TYPE = {
   CLEAR: 'ALERT_CLEAR',
 };
 
-export default ALERT_ACTION_TYPE;
+export {ALERT_ACTION_TYPE} ;

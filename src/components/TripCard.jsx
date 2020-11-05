@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { dateFormat } from "../helpers/dateFormat";
-import GLOBAL_CONSTANTS from "../constants/globalConstants";
+import {GLOBAL_CONSTANTS} from "../constants";
 const TripCard = ({ trip, handleDelete, handleEdit }) => {
 
   return (
@@ -17,7 +17,7 @@ const TripCard = ({ trip, handleDelete, handleEdit }) => {
           {" "}
           <EditOutlined
             style={{ paddingRight: "10px" }}
-            onClick={() => handleEdit(trip)}
+            onClick={() => handleEdit(trip.id)}
           />
           <Popconfirm title={GLOBAL_CONSTANTS.ARE_YOU_SURE}
             onConfirm={() => handleDelete(trip.id)}
@@ -34,4 +34,4 @@ const TripCard = ({ trip, handleDelete, handleEdit }) => {
   );
 };
 
-export default TripCard;
+export {TripCard} ;
