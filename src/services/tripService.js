@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../config';
-import GLOBAL_CONSTANTS from '../constants/globalConstants';
+import {GLOBAL_CONSTANTS} from '../constants';
 
 const handleResponse = (response) => {
     if(response.status===GLOBAL_CONSTANTS.ERROR){

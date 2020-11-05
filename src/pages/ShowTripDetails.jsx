@@ -5,14 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import InfiniteCalendar from "react-infinite-calendar";
 import "react-infinite-calendar/styles.css";
 import '../css/showTripDetails.css';
-import tripActions from "../actions/tripManagement.action";
-import TripCard from "../components/TripCard";
-import TripForm from "../components/TripForm";
+import {tripActions} from "../actions";
+import {TripCard ,TripForm ,ShowAlert,MyLoader} from "../components";
 import { dateFormat } from "../helpers/dateFormat";
-import MyLoader from "../components/MyLoader";
-import ShowAlert from "../components/ShowAlert";
-import GLOBAL_CONSTANTS from "../constants/globalConstants";
+import {GLOBAL_CONSTANTS} from "../constants";
+
 const ShowTripDetails = () => {
+
+
+  const allTrips = useSelector((state) => state.allTrips);
+  const { trips, isLoading, tripById } = allTrips;
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
   const [createFormVisible, setCreateFormVisible] = useState(false);
@@ -22,15 +24,13 @@ const ShowTripDetails = () => {
   const handleDelete = (id) => {
     dispatch(tripActions.deleteTrip(id));
   };
-  const allTrips = useSelector((state) => state.allTrips);
-  const { trips ,isLoading ,tripById} = allTrips;
   const handleCancel = () => {
     setVisible(false);
     setCreateFormVisible(false);
   };
   const handleEdit = (tripId) => {
     setVisible(true);
-   dispatch(tripActions.getTripById(tripId))
+    dispatch(tripActions.getTripById(tripId))
   };
 
   const onFinish = (fieldsValue) => {
@@ -42,14 +42,14 @@ const ShowTripDetails = () => {
       ...fieldsValue,
       start: dateFormat(fieldsValue.start),
     };
-     dispatch(tripActions.createTrip(values));
-     handleCancel();
-  
+    dispatch(tripActions.createTrip(values));
+    handleCancel();
+
   };
   return (
     <div>
-      <ShowAlert/>
-      {visible && tripById&&(
+      <ShowAlert />
+      {visible && tripById && (
         <TripForm
           tripData={tripById}
           handleCancel={handleCancel}
@@ -88,20 +88,20 @@ const ShowTripDetails = () => {
           return (
             <Row style={{ paddingTop: "25px" }} key={index}>
               <Col span={9} offset={3}>
-            {isLoading?<MyLoader/> :   <TripCard
-                
+                {isLoading ? <MyLoader /> : <TripCard
+
                   trip={trip}
                   handleDelete={handleDelete}
                   handleEdit={handleEdit}
                 />}
               </Col>
               <Col span={9} offset={3}>
-             {isLoading?<MyLoader/>:<InfiniteCalendar
+                {isLoading ? <MyLoader /> : <InfiniteCalendar
                   width={400}
                   height={100}
                   selected={trip.start}
                   theme={{ headerColor: trip.color }}
-                />}   
+                />}
               </Col>
             </Row>
           );

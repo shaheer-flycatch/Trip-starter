@@ -1,6 +1,5 @@
 import React from "react";
-import { DatePicker, Modal } from "antd";
-import { Form, Input, Button } from "antd";
+import { DatePicker, Modal , Form, Input, Button} from "antd";
 import { formItemLayout, submitButtonLayout } from "../constants/formConstants";
 
 const TripForm = ({ handleCancel, tripData, onFinish, isEdit, title }) => {
@@ -66,4 +65,4 @@ const TripForm = ({ handleCancel, tripData, onFinish, isEdit, title }) => {
   );
 };
 
-export default TripForm;
+export {TripForm} ;

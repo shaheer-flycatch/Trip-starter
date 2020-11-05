@@ -1,4 +1,4 @@
-import  ALERT_ACTION_TYPE  from '../constants/alert.constants';
+import {ALERT_ACTION_TYPE}   from '../constants/alert.constants';
 
 function success(message) {
   return { type: ALERT_ACTION_TYPE.SUCCESS, message };
@@ -16,4 +16,4 @@ const alertActions = {
   clear,
 };
 
-export default alertActions;
+export {alertActions} ;

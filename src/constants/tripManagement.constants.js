@@ -25,5 +25,5 @@ const ACTION_TYPE = {
   
   };
   
-  export default ACTION_TYPE;
+  export {ACTION_TYPE} ;
   
