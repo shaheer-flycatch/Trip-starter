@@ -1,5 +1,5 @@
-# Account Book
-Account Book is an application used to keep a track of your purchases, sales. and expenditure on a daily basis.
+# TRIP STARTER
+
 ## Requirements
 - For development, you will only need [Node.js](https://nodejs.org/en/download/) 
 ## Clone
